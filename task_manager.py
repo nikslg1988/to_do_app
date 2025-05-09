@@ -18,7 +18,10 @@ def delete_task(delete_ind):
         print("Введено неверное число.")
     except ValueError:
         print("Неверный формат данных. Введите число: ")
-        
+
+def edit_task(): #TODO
+    """редактирование задачи""" 
+    pass    
     
     
 task = str(input())
