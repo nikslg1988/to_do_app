@@ -19,9 +19,17 @@ def delete_task(delete_ind):
     except ValueError:
         print("Неверный формат данных. Введите число: ")
 
-def edit_task(): #TODO
-    """редактирование задачи""" 
-    pass    
+def edit_task(task_number, new_text): 
+    """редактирование задачи"""  
+    if 1 <= task_number <= len(task_list):
+        task_list[task_number - 1] = new_text
+        print(f"Задача №{task_number} обновлена")
+    else:
+        print("Задачи с таким номером не существует")
+   
+def save_task_to_file(): #TODO
+    """сохранение задачи в файл"""
+    pass        
     
     
 task = str(input())
