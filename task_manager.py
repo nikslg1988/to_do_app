@@ -27,9 +27,30 @@ def edit_task(task_number, new_text):
     else:
         print("Задачи с таким номером не существует")
    
-def save_task_to_file(): #TODO
+def save_tasks_to_file(filename): 
     """сохранение задачи в файл"""
-    pass        
+    try:
+        with open(filename, 'w') as file:
+            for item in task_list:
+                file.write(item + '\n')
+            print(f"{filename} успешно записан")
+    except OSError:
+        print('Ошибка при работе с файлом')
+
+def load_tasks_from_file(filename): #TODO 
+    """Загрузка задач из файла"""
+    task_list.clear()
+    try:
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+            for line in lines:
+                task_list.append(line.strip('\n'))
+        print('Задачи успешно загружены')
+    except FileNotFoundError:
+        print('Файл не найден')
+    except OSError:
+        print('Ошибка при работе с файлом')
+           
     
     
 task = str(input())
