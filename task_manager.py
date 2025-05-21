@@ -1,8 +1,18 @@
+from datetime import datetime
+
 task_list = []
+task = str(input())
+keys = ['id', 'title', 'tag', 'priority', 'done', 'created']
 
 def add_task(task):
     """добавляем задачу в список"""
-    task_list.append(task)
+    keys = ['id', 'title', 'tag', 'priority', 'done', 'created']
+    task['id'] = get_next_id()
+    task['title'] = input("Введите заголовок задачи: ")
+    task['tag'] = input("Введите тег задачи: ")
+    task['done'] = False
+    task['priority'] = valid_priority()
+    task['created'] = datetime.now().strftime("%Y-%m-%d %H:%M")
     
 def list_tasks():
     """вывод всех задач с нумерацией"""
@@ -38,7 +48,7 @@ def save_tasks_to_file(filename):
         print('Ошибка при работе с файлом')
 
 def load_tasks_from_file(filename): #TODO 
-    """Загрузка задач из файла"""
+    """загрузка задач из файла"""
     task_list.clear()
     try:
         with open(filename, 'r') as file:
@@ -50,8 +60,20 @@ def load_tasks_from_file(filename): #TODO
         print('Файл не найден')
     except OSError:
         print('Ошибка при работе с файлом')
-           
-    
-    
-task = str(input())
+        
+def get_next_id():
+    """создаём корректный ID для задачи"""
+    if not task_list:
+        return 1
+    return max(task["id"] for task in task_list) + 1
 
+def valid_priority():
+    """проверка правильного приоритета"""
+    allowed_priorities = ["low", "medium", "high"]
+    while True:        
+        priority = input("Введите приоритет задачи (low/medium/high): ").lower()
+        if priority in allowed_priorities:
+            return priority
+        print('Ошибка: приоритет должен быть low, medium или high.')
+             
+    
