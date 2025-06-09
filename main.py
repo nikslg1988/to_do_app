@@ -1,6 +1,6 @@
 
 import sys
-from task_manager import add_task, list_tasks, delete_task, edit_task, save_tasks_to_file, load_tasks_from_file
+from task_manager import add_task, list_tasks, delete_task_by_id, edit_task, save_tasks_to_file, load_tasks_from_file
 while True:
     # Меню
     print("Меню:")
@@ -28,7 +28,7 @@ while True:
     elif choice_func == 3:
         try:
             task_number = int(input("Удалить задачу (укажите номер): "))
-            delete_task(task_number)
+            delete_task_by_id(task_number)
         except ValueError:
             print("Номер задачи должен быть числом!")
     elif choice_func == 4:
