@@ -25,15 +25,15 @@ def list_tasks():
     for i, task in enumerate(task_list, start=1):
         print(f'{i} {task}')
 
-def delete_task(delete_ind):
-    """удаление задачи по номеру"""
-    try:
-        if 1 <= delete_ind <= len(task_list):
-            task_list.pop(delete_ind - 1)
-    except IndexError:
-        print("Введено неверное число.")
-    except ValueError:
-        print("Неверный формат данных. Введите число: ")
+def delete_task_by_id(task_id):
+    task = find_task_by_id(task_id)
+    if task:
+        task_list.remove(task)
+        save_tasks_to_file("tasks.json")
+        print(f"Задача с id {task_id} успешно удалена")
+    else:
+        print("Задача не найдена")
+    
 
 def edit_task(task_id):
     """редактирование задачи"""
