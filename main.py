@@ -1,7 +1,6 @@
 
 import sys
 from task_manager import add_task, list_tasks, delete_task, edit_task, save_tasks_to_file, load_tasks_from_file
-
 while True:
     # Меню
     print("Меню:")
@@ -40,8 +39,8 @@ while True:
         except ValueError:
             print("Номер задачи должен быть числом!")
     elif choice_func == 5:
-        save_tasks_to_file(input("Укажите имя файла для сохранения *.txt: "))
+        save_tasks_to_file(input("Укажите имя файла для сохранения *.json: "))
     elif choice_func == 6:
-        load_tasks_from_file(input("Укажите имя файла для загрузки *.txt: "))
+        load_tasks_from_file(input("Укажите имя файла для загрузки *.json: "))
     elif choice_func == 0:
         break  # Выход из программы
