@@ -1,6 +1,7 @@
 
 import sys
 from task_manager import add_task, list_tasks, delete_task_by_id, edit_task, save_tasks_to_file, load_tasks_from_file
+1
 while True:
     # Меню
     print("Меню:")
@@ -22,7 +23,7 @@ while True:
         continue  # Если пользователь ввел не число, пропустим текущую итерацию и повторим запрос
     # Обработка выбора
     if choice_func == 1:
-        add_task(input("Введите текст задачи: "))
+        add_task(2)
     elif choice_func == 2:
         list_tasks()
     elif choice_func == 3:
@@ -34,8 +35,7 @@ while True:
     elif choice_func == 4:
         try:
             task_number = int(input("Укажите номер задачи для редактирования: "))
-            new_text = input("Введите новый текст задачи: ")
-            edit_task(task_number, new_text)
+            edit_task(task_number)
         except ValueError:
             print("Номер задачи должен быть числом!")
     elif choice_func == 5:
